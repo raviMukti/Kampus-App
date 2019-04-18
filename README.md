@@ -6,3 +6,6 @@ Setup DB
 - Buka Package Resource dan import file kampus_app.sql ke database baru di PHPMyAdmin
 - User = root
 - Pass = 123456
+
+Run Program
+Package Main > Dashboard.java > Run
