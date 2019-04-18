@@ -1,7 +1,6 @@
 
 package Database;
 
-import com.sun.rowset.CachedRowSetImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -41,7 +40,7 @@ public class DBConfig {
             if (conn != null && conn.isClosed()) {
                 conn.close();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             throw e;
         }
     }

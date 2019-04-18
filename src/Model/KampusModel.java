@@ -26,6 +26,8 @@ public class KampusModel {
         this.jenjang_mhs = jenjang_mhs;
     }
 
+
+
     public String getNama_mhs() {
         return nama_mhs;
     }
