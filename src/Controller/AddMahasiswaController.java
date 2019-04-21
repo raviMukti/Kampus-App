@@ -124,6 +124,7 @@ public class AddMahasiswaController implements Initializable {
 
                 // Memanggil method resetField()
                 DashboardController.getInstance().loadData();
+                DashboardController.getInstance().setDisable();
                 simpanBtn.getScene().getWindow().hide();
         }
     }
