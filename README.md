@@ -1,11 +1,7 @@
 # Kampus-App
-Aplikasi Kampus App Tahap 1 yang dibuat dengan menggunakan JavaFX dengan metode MVC (DAO)
-Sangat Sederhana sekali..
+Simple CRUD Application with MVC DAO Pattern
 
 Setup DB
-- Buka Package Resource dan import file kampus_app.sql ke database baru di PHPMyAdmin
-- User = root
-- Pass = 123456
-
-Run Program
-Package Main > Dashboard.java > Run
+- Create New Database on your phpMyAdmin
+- Open Package Resource and import the kampus_app.sql file to your Database
+- Customize connection properties in DBConfig, makes it same as your setup in phpMyAdmin
