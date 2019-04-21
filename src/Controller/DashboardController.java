@@ -22,9 +22,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -61,6 +63,8 @@ public class DashboardController implements Initializable {
     private Button delBtn;
     @FXML
     private Button btnExit;
+    @FXML
+    private Label userDash;
 
     /**
      * Initializes the controller class.
@@ -70,16 +74,21 @@ public class DashboardController implements Initializable {
         initCol();
         loadData();
         dashboardTable.refresh();
+        delBtn.setDisable(true);
+        editBtn.setDisable(true);
     }    
 
     @FXML
     private void addBtnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/AddMahasiswa.FXML"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/View/AddMahasiswa.fxml"));
+        Parent root = (Parent) loader.load();
         Stage stage = new Stage();
-        stage.initOwner(addBtn.getScene().getWindow());
-        stage.setScene(new Scene((Parent) loader.load()));
-        
+        Scene scene = new Scene(root);
+        stage.setResizable(false);
+        stage.setScene(scene);
         stage.showAndWait();
+        
     }
 
     @FXML
@@ -100,7 +109,7 @@ public class DashboardController implements Initializable {
     private void delBtnAction(ActionEvent event) throws ClassNotFoundException, SQLException {
        KampusModel item = dashboardTable.getSelectionModel().getSelectedItem();
        String selected = item.getNpm_mhs();
-        // Membuat dialog box konfirmasi
+       // Membuat dialog box konfirmasi
         Alert alertBatal = new Alert(Alert.AlertType.CONFIRMATION);
         alertBatal.setTitle("Kampus App - Konfirmasi Hapus Data");
         alertBatal.setHeaderText("Hapus Data??");
@@ -109,6 +118,7 @@ public class DashboardController implements Initializable {
         if(konfirmasiHapus.get() == ButtonType.OK){
             try {
                 KampusDAO.deleteMhs(selected);
+                setDisable();
             } catch (SQLException e) {
                 System.out.println("Ada kesalahan "+ e);
             }
@@ -177,4 +187,18 @@ public class DashboardController implements Initializable {
        return instance;
    }
 
+   public void initUser(String user){
+       this.userDash.setText(user);
+   }
+
+    @FXML
+    private void setDeleteActive(MouseEvent event) {
+        editBtn.setDisable(false);
+        delBtn.setDisable(false);
+    }
+    
+    public void setDisable(){
+        editBtn.setDisable(true);
+        delBtn.setDisable(true);
+    }
 }

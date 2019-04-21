@@ -21,6 +21,7 @@ import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ToggleGroup;
 /**
  * FXML Controller class
  *
@@ -56,7 +57,12 @@ public class EditMahasiswaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        // Togglegroup untuk RadioButton
+        ToggleGroup radioJk = new ToggleGroup();
+        radioPriaEdit.setToggleGroup(radioJk);
+        radioWanitaEdit.setToggleGroup(radioJk);
+        // Membuat default RadioButton
+        radioPriaEdit.setSelected(true);
     }    
 
     @FXML
@@ -89,6 +95,7 @@ public class EditMahasiswaController implements Initializable {
 
                 // Memanggil method
                 DashboardController.getInstance().loadData();
+                DashboardController.getInstance().setDisable();
                 updateBtn.getScene().getWindow().hide();
         }
     }

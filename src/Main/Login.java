@@ -16,7 +16,7 @@ public class Login extends Application{
     
     @Override
     public void start(Stage loginStage) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/View/Login.FXML"));
+        Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));
         
         Scene scene = new Scene(root);
         loginStage.setTitle("Kampus Lite Login");

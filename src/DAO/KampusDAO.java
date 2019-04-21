@@ -42,12 +42,11 @@ public class KampusDAO {
     }
     
     //Method selectMhs()
-    public static void selectMhs(String npm) throws SQLException, ClassNotFoundException{
-        String dispMhsStmt = "SELECT `nama_mhs`, `npm_mhs`, `tempat_lahir`,"
-                + " `tgl_lahir`, `jenis_kelamin`, `alamat_mhs`, `prodi_mhs`, `jenjang_mhs` FROM `bio_mhs`"
-                + "WHERE npm_mhs = '"+npm+"'";
+    public static void selectMhs(String username, String password) throws SQLException, ClassNotFoundException{
+        String dispMhsStmt = "SELECT `username`, `password` FROM `bio_user` WHERE "
+                + "`bio_user`.`username` AND `bio_user`.`password` = '"+username+"' , '"+password+"'";
         try {
-            DBConfig.dbExecuteUpdate(dispMhsStmt);
+            DBConfig.dbExecuteQuery(dispMhsStmt);
         } catch (SQLException e) {
             System.out.println("Ada Kesalahan " + e);
         }
