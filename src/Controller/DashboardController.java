@@ -11,8 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +25,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -85,12 +84,16 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void editBtnAction(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EditMahasiswa.FXML"));
-       
-      Stage stage = new Stage();
-      stage.initOwner(editBtn.getScene().getWindow());
-      stage.setScene(new Scene((Parent) loader.load()));
-      stage.showAndWait();
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("/View/EditMahasiswa.fxml"));
+      Parent root = (Parent) loader.load();
+      EditMahasiswaController controller = loader.getController();
+      controller.initData(dashboardTable.getSelectionModel().getSelectedItem().getNpm_mhs());
+      Scene newScene =  new Scene(root);
+      Stage newStage = new Stage();
+      newStage.initModality(Modality.APPLICATION_MODAL);
+      newStage.setScene(newScene);
+      newStage.showAndWait();
     }
 
     @FXML
@@ -150,7 +153,7 @@ public class DashboardController implements Initializable {
             
             while (result.next()) {                
                 oblist.add(new KampusModel(result.getString("nama_mhs"), result.getString("npm_mhs"), 
-                        result.getString("tempat_lahir"), result.getString("tgl_lahir"), 
+                        result.getString("tempat_lahir"), result.getDate("tgl_lahir").toLocalDate(), 
                         result.getString("jenis_kelamin"), result.getString("alamat_mhs"),
                         result.getString("prodi_mhs"), result.getString("jenjang_mhs")));
             }

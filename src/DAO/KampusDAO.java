@@ -53,4 +53,21 @@ public class KampusDAO {
         }
         DBConfig.dbDisconnect();
     }
+    
+    //Method updateMhs()
+//    UPDATE `bio_mhs` SET `nama_mhs` = 'Junaedi' WHERE `bio_mhs`.`id_mhs` = 4
+    public static void updateMhs(String nama, String npm, String tempat, LocalDate tanggal, String jk, 
+           String alamat, String sql) throws  SQLException, ClassNotFoundException {
+        //Deklarasi Insert  Statement
+        String updateStmt = 
+                  "UPDATE `bio_mhs` SET `nama_mhs`='"+nama+"', `npm_mhs`='"+npm+"',"
+                + "`tempat_lahir`='"+tempat+"',"
+                + " `tgl_lahir`='"+tanggal+"', `jenis_kelamin`='"+jk+"', `alamat_mhs`='"+alamat+"' WHERE "
+                + "`bio_mhs`.`npm_mhs` = '"+sql+"'";
+        try {
+            DBConfig.dbExecuteUpdate(updateStmt);
+        } catch (SQLException e) {
+            System.out.println("Ada Kesalahan saat input data ke Database" + e);
+        }
+    }
 }

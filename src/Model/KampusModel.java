@@ -1,9 +1,7 @@
 
 package Model;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import javafx.beans.property.*;
 
 /**
  *
@@ -11,11 +9,11 @@ import javafx.beans.property.*;
  */
 public class KampusModel {
     
-    String nama_mhs, npm_mhs, tempat_mhs, tanggal_mhs, jk_mhs, alamat_mhs, prodi_mhs, jenjang_mhs;
-    
+    String nama_mhs, npm_mhs, tempat_mhs, jk_mhs, alamat_mhs, prodi_mhs, jenjang_mhs;
+    LocalDate tanggal_mhs;
   
 
-    public KampusModel(String nama_mhs, String npm_mhs, String tempat_mhs, String tanggal_mhs, String jk_mhs, String alamat_mhs, String prodi_mhs, String jenjang_mhs) {
+    public KampusModel(String nama_mhs, String npm_mhs, String tempat_mhs, LocalDate tanggal_mhs, String jk_mhs, String alamat_mhs, String prodi_mhs, String jenjang_mhs) {
         this.nama_mhs = nama_mhs;
         this.npm_mhs = npm_mhs;
         this.tempat_mhs = tempat_mhs;
@@ -52,11 +50,11 @@ public class KampusModel {
         this.tempat_mhs = tempat_mhs;
     }
 
-    public String getTanggal_mhs() {
+    public LocalDate getTanggal_mhs() {
         return tanggal_mhs;
     }
 
-    public void setTanggal_mhs(String tanggal_mhs) {
+    public void setTanggal_mhs(LocalDate tanggal_mhs) {
         this.tanggal_mhs = tanggal_mhs;
     }
 

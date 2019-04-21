@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -30,8 +29,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" text="Nama" GridPane.valignment="BOTTOM" />
@@ -40,15 +37,11 @@
             <Label alignment="BASELINE_RIGHT" contentDisplay="CENTER" text="Tanggal Lahir" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
             <Label alignment="BASELINE_RIGHT" contentDisplay="CENTER" text="Jenis Kelamin" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
             <Label alignment="BASELINE_RIGHT" contentDisplay="CENTER" text="Alamat" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-            <Label alignment="BASELINE_RIGHT" contentDisplay="CENTER" text="Prodi" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-            <Label alignment="BASELINE_RIGHT" contentDisplay="CENTER" text="Jenjang" GridPane.rowIndex="7" GridPane.valignment="BOTTOM" />
             <JFXTextField fx:id="fieldEditNama" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
             <JFXTextField fx:id="fieldEditNpm" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <JFXTextField fx:id="pobEdit" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <DatePicker fx:id="dobEdit" prefHeight="25.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
             <JFXTextArea fx:id="alamatEdit" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <JFXComboBox fx:id="comboProdiEdit" layoutX="93.0" layoutY="205.0" prefHeight="25.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-            <JFXComboBox fx:id="comboJenjangEdit" layoutX="93.0" layoutY="311.0" prefHeight="25.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.valignment="BOTTOM" />
             <JFXRadioButton fx:id="radioPriaEdit" text="Pria" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets left="25.0" />
