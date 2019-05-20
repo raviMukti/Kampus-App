@@ -2,8 +2,6 @@
 package DAO;
 
 import Database.DBConfig;
-import Model.KampusModel;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 

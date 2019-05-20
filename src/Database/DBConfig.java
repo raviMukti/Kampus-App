@@ -70,8 +70,8 @@ public class DBConfig {
             dbConnect();
             stmt = conn.createStatement();
             stmt.executeUpdate(sqlSmt);
-        } catch (SQLException e) {
-            System.out.println("Ada Kesalahan " + e);
+        } catch (Exception e) {
+            System.out.println(e);
         }finally{
             dbDisconnect();
         }

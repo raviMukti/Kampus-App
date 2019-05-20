@@ -96,7 +96,7 @@ public class AddMahasiswaController implements Initializable {
 
     @FXML
     private void simpanBtnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-            // Mengecheck Semua Field Telah terisi
+        // Mengecheck Semua Field Telah terisi
         if(fieldNama.getText().isEmpty() || fieldNpm.getText().isEmpty() || 
            pob.getText().isEmpty() || dob.getValue().toString().isEmpty() ||
            alamat.getText().isEmpty()){
@@ -122,10 +122,10 @@ public class AddMahasiswaController implements Initializable {
                 alertSimpan.setContentText("Simpan data ke database berhasil !");
                 alertSimpan.showAndWait();
 
-                // Memanggil method resetField()
-                DashboardController.getInstance().loadData();
-                DashboardController.getInstance().setDisable();
-                simpanBtn.getScene().getWindow().hide();
+                
+                DashboardController.getInstance().loadData(); //memanggil method loadData() dari DashboardController
+                DashboardController.getInstance().setDisable(); //memanggil method setDisable() dari DashboardController
+                simpanBtn.getScene().getWindow().hide(); //Menutup scene AddMahasiswa.fxml
         }
     }
 

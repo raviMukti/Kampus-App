@@ -33,7 +33,7 @@
             <TableColumn fx:id="jenjang_col" prefWidth="75.0" text="Jenjang" />
         </columns>
       </TableView>
-      <Button fx:id="addBtn" layoutX="167.0" layoutY="409.0" mnemonicParsing="false" onAction="#addBtnAction" prefHeight="65.0" prefWidth="116.0" style="-fx-background-radius: 15;">
+      <Button fx:id="addBtn" layoutX="221.0" layoutY="408.0" mnemonicParsing="false" onAction="#addBtnAction" prefHeight="65.0" prefWidth="116.0" style="-fx-background-radius: 15;">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,7 +41,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="editBtn" layoutX="292.0" layoutY="409.0" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="65.0" prefWidth="116.0" style="-fx-background-radius: 15;">
+      <Button fx:id="editBtn" layoutX="346.0" layoutY="408.0" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="65.0" prefWidth="116.0" style="-fx-background-radius: 15;">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -49,7 +49,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="delBtn" layoutX="416.0" layoutY="409.0" mnemonicParsing="false" onAction="#delBtnAction" prefHeight="65.0" prefWidth="116.0" style="-fx-background-radius: 15;">
+      <Button fx:id="delBtn" layoutX="470.0" layoutY="408.0" mnemonicParsing="false" onAction="#delBtnAction" prefHeight="65.0" prefWidth="116.0" style="-fx-background-radius: 15;">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,9 +57,9 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label layoutX="211.0" layoutY="456.0" text="Add" />
-      <Label layoutX="339.0" layoutY="456.0" text="Edit" />
-      <Label layoutX="457.0" layoutY="456.0" text="Delete" />
+      <Label layoutX="268.0" layoutY="456.0" text="Add" />
+      <Label layoutX="394.0" layoutY="456.0" text="Edit" />
+      <Label layoutX="511.0" layoutY="456.0" text="Delete" />
       <Button fx:id="btnExit" layoutX="595.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnExitAction" prefHeight="41.0" prefWidth="57.0">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -74,5 +74,15 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Button fx:id="printBtn" layoutX="93.0" layoutY="408.0" mnemonicParsing="false" onAction="#printBtnAction" prefHeight="65.0" prefWidth="116.0" style="-fx-background-radius: 15;">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/icons8-print-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="140.0" layoutY="456.0" text="Print" />
    </children>
 </AnchorPane>

@@ -4,13 +4,21 @@ package Controller;
 import DAO.KampusDAO;
 import Database.DBConfig;
 import Model.KampusModel;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +37,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -65,6 +84,8 @@ public class DashboardController implements Initializable {
     private Button btnExit;
     @FXML
     private Label userDash;
+    @FXML
+    private Button printBtn;
 
     /**
      * Initializes the controller class.
@@ -76,10 +97,12 @@ public class DashboardController implements Initializable {
         dashboardTable.refresh();
         delBtn.setDisable(true);
         editBtn.setDisable(true);
+        printBtn.setDisable(true);
     }    
 
     @FXML
     private void addBtnAction(ActionEvent event) throws IOException {
+//      Load file AddMahasiswa.fxml untuk berpindah stage
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/View/AddMahasiswa.fxml"));
         Parent root = (Parent) loader.load();
@@ -96,7 +119,8 @@ public class DashboardController implements Initializable {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("/View/EditMahasiswa.fxml"));
       Parent root = (Parent) loader.load();
-      EditMahasiswaController controller = loader.getController();
+      EditMahasiswaController controller = loader.getController(); //Load controller agar bisa ambil method di ctrl lain
+//    method initData (Untuk Ambil id yg terpilih) ketika tableview dipilih dan pass variable ke controller EditMahasiswa
       controller.initData(dashboardTable.getSelectionModel().getSelectedItem().getNpm_mhs());
       Scene newScene =  new Scene(root);
       Stage newStage = new Stage();
@@ -131,7 +155,7 @@ public class DashboardController implements Initializable {
         // Membuat dialog box konfirmasi
         Alert alertBatal = new Alert(Alert.AlertType.CONFIRMATION);
         alertBatal.setTitle("Kampus App - Konfirmasi Keluar");
-        alertBatal.setHeaderText("Batal Simpan Bio");
+        alertBatal.setHeaderText("Keluar Aplikasi");
         alertBatal.setContentText("Apakah anda yakin akan Keluar?");
         Optional<ButtonType> konfirmasiBatal = alertBatal.showAndWait();
         if(konfirmasiBatal.get() == ButtonType.OK){
@@ -195,10 +219,33 @@ public class DashboardController implements Initializable {
     private void setDeleteActive(MouseEvent event) {
         editBtn.setDisable(false);
         delBtn.setDisable(false);
+        printBtn.setDisable(false);
     }
     
     public void setDisable(){
         editBtn.setDisable(true);
         delBtn.setDisable(true);
+    }
+    
+    // Method to call Jasper File
+    @FXML
+    private void printBtnAction(ActionEvent event) throws SQLException, ClassNotFoundException, FileNotFoundException, JRException {
+        Connection conn = DBConfig.getConnection(); //Make Connection to DB
+        KampusModel item = dashboardTable.getSelectionModel().getSelectedItem(); // Get Selected item from JFXTableView
+        String selected = item.getNpm_mhs();
+        try {
+            File file = new File("D:\\ITSUPPORT\\Project\\Java\\Aplikasi\\Kampus App\\src\\Report\\LaporanMahasiswaDetail.jrxml");
+            InputStream stream = new FileInputStream(file);
+            JasperDesign design = JRXmlLoader.load(stream);
+            System.out.println(design);
+            JasperReport report = JasperCompileManager.compileReport(design);
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("NPM", selected); //Put Parameter npm_mhs
+            JasperPrint print = JasperFillManager.fillReport(report, params, conn);
+            JasperViewer view = new JasperViewer(print, false);
+            view.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+        }
     }
 }
