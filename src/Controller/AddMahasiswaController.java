@@ -113,6 +113,7 @@ public class AddMahasiswaController implements Initializable {
             if (radioWanita.isSelected()) {
                 jk = radioWanita.getText();
             }
+            //Memasukan Data dari form ke database dengan memangnggil method inserMhs dari class DAO
             KampusDAO.insertMhs(fieldNama.getText(), fieldNpm.getText(), pob.getText(), dob.getValue(),
                     jk, alamat.getText(), comboProdi.getValue(), comboJenjang.getValue());
             // Menampilkan dialog box informasi

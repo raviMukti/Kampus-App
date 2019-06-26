@@ -1,7 +1,6 @@
 
 package Controller;
 
-import DAO.KampusDAO;
 import Database.DBConfig;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -22,7 +21,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javax.swing.JOptionPane;
 
@@ -74,6 +72,7 @@ public class LoginController implements Initializable {
                 controll.initUser(fieldUser.getText());
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
+                stage.setTitle("Kampus App - Dashboard");
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.setOnCloseRequest((event1) -> {
